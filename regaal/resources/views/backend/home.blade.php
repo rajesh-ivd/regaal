@@ -45,26 +45,26 @@
                     </div>
                     <div class="tab-content bd bd-gray-300 bd-t-0 pd-20" id="myTabContent">
                         <!-- Banner section -->
-                        @include('backend.Home_banner.Banner') 
+                        @include('backend.Home_banner.Banner')
                         <!-- Introduction Section -->
                         {{-- @include('backend.Home_banner.Introduction_Section') --}}
                         <div class="tab-pane fade show" id="section1" role="tabpanel" aria-labelledby="section1-tab">
                           <form class="form" action="{{ url('/section1/save') }}" method="POST">
                               <div class="headerText">
-                                  <h4 class="mg-b-25">Introduction Management</h4>
+                                  <h4 class="mg-b-25">Introduction Management Home</h4>
                                   <input type="submit" class="btn btn-primary" value="Save" onclick="updateIntroductionData()">
                               </div>
                               @csrf
                               <label for="home_section1_title">Title:</label>
                               <input type="text" class="form-control" id="home_section1_title" placeholder="Enter title" name="home_section1_title" required>
-                      
+
                               <label for="home_section1_text">Text:</label>
                               <textarea class="form-control" id="home_section1_text" placeholder="Enter text" rows="4" name="home_section1_text" required></textarea>
-                      
+
                               <label for="home_section2_videoid">Vimeo Video ID:</label>
                               <input type="text" class="form-control" id="home_section2_videoid" placeholder="Enter Video ID" name="home_section2_videoid">
                               <p><strong>Note:</strong> Please enter only the Vimeo Video ID. To get a Video ID, you can open a video in Vimeo, and in the URL bar, you will find something similar to this - "https://vimeo.com/472927205," where "472927205" is the Video ID.
-                      
+
                               <input type="hidden" name="id" value="">
                           </form>
                       </div>
@@ -127,7 +127,7 @@
                     loadIntroductionData();
 
                     </script>
-                    
+
                         {{-- Journey Section --}}
                         {{-- @include('backend.Home_banner.Journey_Management') --}}
                         <div class="tab-pane fade show" id="section2" role="tabpanel" aria-labelledby="section2-tab">
@@ -146,7 +146,7 @@
                               </div><br><br>
                             </form>
 
-                              
+
                               <h5>Timeline:</h5>
                               <table class="table table-hover">
                                   <thead>
@@ -161,7 +161,7 @@
                                   </tbody>
                               </table>
                               <!-- Other content for the tab -->
-                          
+
                       </div>
                       <div class="modal fade" id="exampleModal4">
                         <div class="modal-dialog">
@@ -170,7 +170,7 @@
                               <h4 class="modal-title">Update Timeline</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-                      
+
                             <div class="modal-body">
                               <form class="form" action="{{ url('/update2/save') }}" method="post" >
                                 @csrf
@@ -184,7 +184,7 @@
                                 <p style="color: red; font-size: 15px;"><b id="about_section5_error_edit"></b></p>
                               </form>
                             </div>
-                      
+
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
@@ -244,7 +244,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-      
+
         <form class="form" action="{{ url('/save_banner_mob') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="target_type" id="target_type" value="">
@@ -260,7 +260,7 @@
           <input type="hidden" name="img_target_page_mob" value="home_mob.php">
           <button type="submit" class="btn btn-success">Save</button>
         </form>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -323,7 +323,7 @@
           <div class="container" style="text-align: center; padding: 10px 20px;"></div>
           <label for="modalBannerImage_mob"><b id="type_text">Choose Image (1350x850):</b></label>
           <input type="file" name="modalBannerImage_mob" accept="image/png, image/jpg, image/jpeg"><br>
-        
+
           @error('modalBannerImage_mob')
           <p style="color: red; font-size: 15px;"><b>{{ $message }}</b></p>
           @enderror
@@ -351,7 +351,7 @@
         console.log(data);
         $('#modalBannerId').val(bannerId);
         $('#modalBannerText').val(data.img_text);
-  
+
         $('#modalBannerImage').attr('src', '{{ asset('backend/img/banner/') }}/' + data.img_link);
       },
       error: function () {
@@ -359,7 +359,7 @@
       }
     });
   }
-  
+
   function populateModal_mob(bannerId, targetPage) {
     console.log(targetPage);
     $.ajax({
@@ -369,7 +369,7 @@
         console.log(data);
         $('#modalBannerId_mob').val(bannerId);
         $('#modalBannerText_mob').val(data.img_text);
-  
+
         $('#modalBannerImage_mob').attr('src', '{{ asset('backend/img/banner/') }}/' + data.img_link);
       },
       error: function () {
