@@ -99,7 +99,7 @@
         error: function () {
             alert("Failed to update introduction data");
         }
-    });
+    }) ;
 }
 
                       </script>

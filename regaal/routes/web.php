@@ -49,7 +49,7 @@ Route::get('/admin/csr',[CSRController::class,'index']);
 Route::get('/admin/careers',[CareersController::class,'index']);
 Route::get('/admin/contact',[ContactController::class,'index']);
 
-//Backend Controller Banner 
+//Backend Controller Banner
 use App\Http\Controllers\Backend\Banner\BannerController;
 use App\Http\Controllers\Backend\Banner\IntroductionSectionController;
 use App\Http\Controllers\Backend\Banner\JourneySectionController;
@@ -68,7 +68,7 @@ Route::get('/home/section1', [HomeController::class, 'IntoductionData']);
 Route::post('/section1/save', [IntroductionSectionController::class, 'homeSection1Save']);
 
 
-// Journey Section Controller 
+// Journey Section Controller
 Route::get('/home/section2', [HomeController::class, 'JourneyData']);
 Route::get('/api/journey-data', [HomeController::class, 'getJourneyData']);
 
@@ -79,3 +79,5 @@ Route::post('/update2/save', [HomeController::class, 'updateJourneyData']);
 
 Route::get('/api/introduction-data', [HomeController::class, 'fetchIntroductionData']);
 Route::post('/api/update-introduction-data', [HomeController::class, 'updateIntroductionData']);
+
+Route::post('updateAboutSection1', [AboutController::class, 'about']);
