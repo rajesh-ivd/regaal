@@ -64,20 +64,22 @@ Route::post('/save_banner_mob_update', [BannerController::class, 'updateBannerMo
 Route::get('/admin/home/{id}/{target}', [BannerController::class, 'deskMobID']);
 
 // Introduction Section Controller
-Route::get('/home/section1', [HomeController::class, 'IntoductionData']);
+
 Route::post('/section1/save', [IntroductionSectionController::class, 'homeSection1Save']);
 
 
 // Journey Section Controller
-Route::get('/home/section2', [HomeController::class, 'JourneyData']);
-Route::get('/api/journey-data', [HomeController::class, 'getJourneyData']);
+Route::get('/home/section2', [JourneySectionController::class, 'JourneyData']);
+Route::get('/api/journey-data', [JourneySectionController::class, 'getJourneyData']);
+Route::post('/section2/save', [JourneySectionController::class, 'insertJourneyData']);
+// Route::post('/update2/save/{id}', [JourneySectionController::class, 'updateJourneyData']);
+Route::post('/api/update-journey-data/{id}', [JourneySectionController::class, 'updateJourneyData'])->name('journey.update');
 
-Route::post('/section2/save', [HomeController::class, 'insertJourneyData']);
-
-Route::post('/update2/save', [HomeController::class, 'updateJourneyData']);
 
 
-Route::get('/api/introduction-data', [HomeController::class, 'fetchIntroductionData']);
+Route::get('/api/introduction-data', [IntroductionSectionController::class, 'fetchIntroductionData']);
+Route::get('/home/section1', [IntroductionSectionController::class, 'IntoductionData']);
 Route::post('/api/update-introduction-data', [HomeController::class, 'updateIntroductionData']);
 
-Route::post('updateAboutSection1', [AboutController::class, 'about']);
+
+Route::post('/updateAboutSection1', [AboutController::class, 'sectionUpdate']);

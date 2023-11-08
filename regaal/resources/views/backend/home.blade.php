@@ -11,17 +11,16 @@
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <!-- Tab links for managing different sections -->
                             <li class="nav-item" onclick="make_active('banner')">
-                                <a class="nav-link" id="banner-tab" data-toggle="tab" href="#banner" role="tab" aria-controls="banner" aria-selected="true">Banner</a>
+                                <a class="nav-link active" id="banner-tab" data-toggle="tab" href="#banner" role="tab" aria-controls="banner" aria-selected="true">Banner</a>
                             </li>
                             <li class="nav-item active" data-section-id="section1" onclick="make_active('section1')">
                                 <a class="nav-link" id="section1-tab" data-toggle="tab" href="#section1" role="tab" aria-controls="section1" aria-selected="true">Introduction Section</a>
+
                             </li>
                             <li class="nav-item" onclick="make_active('section2')">
                                 <a class="nav-link" id="section2-tab" data-toggle="tab" href="#section2" role="tab" aria-controls="section2" aria-selected="true">Journey Section</a>
                             </li>
-                            <li class="nav-item" onclick="make_active('section3')">
-                                <a class="nav-link" id="section3-tab" data-toggle="tab" href="#section3" role="tab" aria-controls="section3" aria-selected="true">Environment Section</a>
-                            </li>
+
                         </ul>
                         <div>
                             <h6 style="color: limegreen;">
@@ -52,7 +51,7 @@
                           <form class="form" action="{{ url('/section1/save') }}" method="POST">
                               <div class="headerText">
                                   <h4 class="mg-b-25">Introduction Management Home</h4>
-                                  <input type="submit" class="btn btn-primary" value="Save" onclick="updateIntroductionData()">
+                                  <input type="submit" class="btn btn-primary" value="Save">
                               </div>
                               @csrf
                               <label for="home_section1_title">Title:</label>
@@ -65,7 +64,7 @@
                               <input type="text" class="form-control" id="home_section2_videoid" placeholder="Enter Video ID" name="home_section2_videoid">
                               <p><strong>Note:</strong> Please enter only the Vimeo Video ID. To get a Video ID, you can open a video in Vimeo, and in the URL bar, you will find something similar to this - "https://vimeo.com/472927205," where "472927205" is the Video ID.
 
-                              <input type="hidden" name="id" value="">
+                              <input type="text" name="hid"  id="id">
                           </form>
                       </div>
                       <script>
@@ -111,6 +110,7 @@
                             success: function (data) {
                                 // Check if data is not empty
                                 if (data) {
+                                    $('#id').val(data.id);
                                     $('#home_section1_title').val(data.home_section1_title);
                                     $('#home_section1_text').val(data.home_section1_text);
                                     $('#home_section2_videoid').val(data.home_section2_videoid);

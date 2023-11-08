@@ -9,6 +9,6 @@ class AdminModel extends Model
 {
     use HasFactory;
     protected $fillable=[
-        
-    ]
+
+    ];
 }

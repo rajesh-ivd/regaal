@@ -60,7 +60,7 @@
                                                 @endif
                                             @endforeach
                                         @else
-                                            <div class="col-md-12"><center><h3>No Data Available!</h3></center></div>
+                                              <div class="col-md-12"><center><h3>No Data Available!</h3></center></div>
                                         @endif
                                     </div>
                                 </div>
@@ -94,46 +94,21 @@
                         </div>
                         <!-- Content Section -->
                         <div class="tab-pane fade show" id="section1" role="tabpanel" aria-labelledby="section1-tab">
-                            <form class="form" action="{{ url('updateAboutSection1') }}" method="post">
+                            @foreach ($home_section_one_data as $data)
+                            <form class="form" action="{{ url('/updateAboutSection1') }}" method="post">
                                 @csrf
                                 <div class="headerText">
                                     <h4 class="mg-b-25">Content Section Management</h4>
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                                 <label for="about_section1_quote1"><b>Quote 1:</b></label>
-                                <input type="text" class="form-control" placeholder="Enter Quote" id="about_section1_quote1" name="about_section1_quote1" value="{{ $about_section1_data[0]->element_content }}" required><br>
+                                <input type="text" class="form-control" placeholder="Enter Quote" name="about_section1_quote1" value="{{ $data->home_section1_text }}" required><br>
+                                <input type="hidden" name="hidenId" value="{{ $data->id }}">
                                 <!-- Include other input fields here as needed -->
-                                <div class="row">
-                                    <div class="col-xl-12">
-                                        <div class="row row-sm mg-b-25 crd">
-                                            @if(isset($about_section1_pic_data))
-                                                @foreach($about_section1_pic_data as $key => $val)
-                                                    <div class="col-md-6">
-                                                        <div class="card card-event" style="width: 50%;">
-                                                            <img src="{{ asset('uploads/' . $val->img_link) }}" class="card-img-top" style="height: auto;" alt="">
-                                                            <div class="card-body tx-13">
-                                                                <h5>{{ $val->img_title }}</h5>
-                                                            </div>
-                                                            <div class="card-footer tx-13">
-                                                                <span class="tx-color-03"></span>
-                                                                <span class="del-icon">
-                                                                    <i class="fas fa-edit" title="Edit" data-toggle="modal" data-target="#exampleModal3" onclick="about_section1_edit_data({{ $val->img_id }})"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    @if(($key + 1) % 2 == 0)
-                                                        </div><div class="row row-sm mg-b-25 crd">
-                                                    @endif
-                                                @endforeach
-                                            @else
-                                                <div class="col-md-12"><center><h3>No Data Available!</h3></center></div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
+                            @endforeach
                         </div>
+
                     </div>
                 </div>
             </div>

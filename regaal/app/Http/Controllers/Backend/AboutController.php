@@ -21,40 +21,23 @@ class AboutController extends Controller
                       ->take(2)
                       ->get();
 
+        $elements = Element::all();
+
         return view('backend.about', [
             'about_banner_data_desk' => $img,
             'about_banner_data_mob' => $imgmob,
+            'home_section_one_data' => $elements,
         ]);
     }
 
-    public function about()
-    {
-        $data['about_banner_data_desk'] = Image::where([
-            'img_section' => 0,
-            'img_target_page' => 'about_desk.php',
-            'img_status' => 'active',
-        ])->get();
+        public function sectionUpdate(Request $request){
+            $aboutSection1Quote1 = $request->input('hidenId');
+            Element::where('id', $aboutSection1Quote1)->update([
+                'home_section1_text' => $request->input('about_section1_quote1'),
+            ]);
 
-        $data['about_banner_data_mob'] = Image::where([
-            'img_section' => 0,
-            'img_target_page' => 'about_mob.php',
-            'img_status' => 'active',
-        ])->get();
+            return redirect()->back()->with('success', 'Section updated successfully');
+        }
 
-        $data['about_section1_data'] = Element::where([
-            'element_section' => 10,
-            'element_target' => 'about.php',
-        ])->orderBy('element_id', 'asc')->get();
 
-        $data['about_section1_pic_data'] = Image::where([
-            'img_section' => 10,
-            'img_target_page' => 'about.php',
-            'img_status' => 'active',
-        ])->get();
-
-        return view('backend.about', [
-            'about_section1_data' => $data['about_section1_data'],
-        ]);
-
-    }
 }

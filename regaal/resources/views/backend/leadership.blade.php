@@ -1,33 +1,12 @@
 @include('backend.layouts.header')
 @include('backend.layouts.aside')
-  
+
 
     <div class="content ht-100v pd-0">
-
       <div class="content-header">
-
         <div style="padding-left: 300px;">
-          <h3 style="color: limegreen;"><?php //echo $this->session->flashdata('flashmsg'); ?></h3>
+          <h3 style="color: limegreen;"></h3>
         </div>
-
-        <!-- <div class="content-search">
-
-          <i data-feather="search"></i>
-
-          <input type="search" class="form-control" placeholder="Search">
-
-        </div> -->
-
-        <!-- <nav class="nav">
-
-          <a href="" class="nav-link"><i data-feather="help-circle"></i></a>
-
-          <a href="" class="nav-link"><i data-feather="grid"></i></a>
-
-          <a href="" class="nav-link"><i data-feather="align-left"></i></a>
-
-        </nav> -->
-
       </div>
 
 
@@ -40,7 +19,7 @@
 
             <div class="media-body mg-t-40 mg-lg-t-0 pd-lg-x-10">
 
-              <div class="df-example">
+            <div class="df-example">
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -56,85 +35,27 @@
 
                   </li>
 
-                  <!-- <li class="nav-item" onclick="make_active('section2')">
-
-                    <a class="nav-link" id="section2-tab" data-toggle="tab" href="#section2" role="tab" aria-controls="section2" aria-selected="true">Journey Section</a>
-
-                  </li>
-
-                  <li class="nav-item" onclick="make_active('section3')">
-
-                    <a class="nav-link" id="section3-tab" data-toggle="tab" href="#section3" role="tab" aria-controls="section3" aria-selected="true">Picture Section</a>
-
-                  </li> -->
-
-                  <!-- <li class="nav-item" onclick="make_active('section4')">
-
-                    <a class="nav-link" id="section4-tab" data-toggle="tab" href="#section4" role="tab" aria-controls="section4" aria-selected="true">Video Section</a>
-
-                  </li> -->
-
-                  <!--<li class="nav-item" onclick="make_active('section5')">
-
-                    <a class="nav-link" id="section5-tab" data-toggle="tab" href="#section5" role="tab" aria-controls="section5" aria-selected="true">Section 5</a>
-
-                  </li>
-
-                  <li class="nav-item" onclick="make_active('section6')">
-
-                    <a class="nav-link" id="section6-tab" data-toggle="tab" href="#section6" role="tab" aria-controls="section6" aria-selected="true">Section 6</a>
-
-                  </li>
-
-                  <li class="nav-item" onclick="make_active('section7')">
-
-                    <a class="nav-link" id="section7-tab" data-toggle="tab" href="#section7" role="tab" aria-controls="section7" aria-selected="true">Section 7</a>
-
-                  </li>
-
-                  <li class="nav-item" onclick="make_active('section8')">
-
-                    <a class="nav-link" id="section8-tab" data-toggle="tab" href="#section8" role="tab" aria-controls="section8" aria-selected="true">Section 8</a>
-
-                  </li> -->
-
-                  <!-- <li class="nav-item" onclick="make_active('section9')">
-
-                    <a class="nav-link" id="section9-tab" data-toggle="tab" href="#section9" role="tab" aria-controls="section9" aria-selected="true">Client Section</a>
-
-                  </li> -->
-
-                  <!-- <li class="nav-item" onclick="make_active('section10')">
-
-                    <a class="nav-link" id="section10-tab" data-toggle="tab" href="#section10" role="tab" aria-controls="section10" aria-selected="true">Section 10</a>
-
-                  </li> -->
-
                 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <div>
+                    <h6 style="color: limegreen;">
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible custom-alert" role="alert">
+                                <button type="button" class="close custom-close" data-dismiss="alert" aria-label="Close" style="padding-left: 12px;">
+                                    <span aria-hidden="true" style="position: relative; top: -15px; left: 35px;">&times;</span>
+                                </button>
+                                <span>{{ session('success') }}</span>
+                            </div>
+                        @elseif (session('error'))
+                            <div class="alert alert-danger alert-dismissible custom-alert" role="alert">
+                                <button type="button" class="close custom-close" data-dismiss="alert" aria-label="Close" style="padding-left: 12px;">
+                                    <span aria-hidden="true" style="position: relative; top: -15px; left: 35px;">&times;</span>
+                                </button>
+                                <span>{{ session('error') }}</span>
+                            </div>
+                        @endif
+                    </h6>
+                </div>
+            </div>
 
                 <div class="tab-content bd bd-gray-300 bd-t-0 pd-20" id="myTabContent">
 
@@ -144,39 +65,29 @@
 
                       <h4 class="mg-b-25">Desktop Banner Management</h4>
 
-                      <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Upload Banner Image</button> -->
 
-                    </div>
+                </div>
 
             <div class="row">
             <div class="col-xl-12">
               <div class="row row-sm mg-b-25 crd">
-                <?php
-                if(isset($leadership_banner_data_desk)){
-                  foreach ($leadership_banner_data_desk as $key => $val) {
-                    echo '<div class="col-md-6">
-                            <div class="card card-event">
-                              <img src="'.base_url().'/uploads/'.$val->img_link.'" class="card-img-top" alt="">
-                              <div class="card-body tx-13">
-                                <h5>'.$val->img_text.'</h5>
-                              </div>
-                              <div class="card-footer tx-13">
-                                <span class="tx-color-03"></span>
-                                <span class="del-icon">
-                                  <i class="fas fa-edit" title="Edit" data-toggle="modal" data-target="#exampleModal2" onclick="leadership_banner_edit_data_desk('.$val->img_id.')"></i>
-                                </span>
-                              </div>
+                @if ($about_banner_data_desk && count($about_banner_data_desk) > 0)
+                @foreach($about_banner_data_desk as $key => $val)
+                    <div class="col-md-6">
+                        <div class="card card-event">
+                            <img src="{{ asset('backend/img/banner/' . $val->img_link) }}" class="card-img-top" alt="Image Alt Text">
+                            <div class="card-body tx-13">
+                                <h5>{{ $val->img_text }}</h5>
                             </div>
-                          </div>';
-                    if(($key+1)%2==0){
-                      echo '</div><div class="row row-sm mg-b-25 crd">';
-                    }
-                  }
-                }
-                else{
-                  echo '<div class="col-md-12"><center><h3>No Data Available !</h3></center></div>';
-                }
-                ?>
+                        </div>
+                    </div>
+                    @if(($key+1) % 2 == 0)
+                        </div><div class="row row-sm mg-b-25 crd">
+                    @endif
+                @endforeach
+            @else
+                  <div class="col-md-12"><center><h3>No Data Available!</h3></center></div>
+            @endif
                   </div>
                 </div>
               </div>
@@ -185,40 +96,27 @@
               <div class="headerText">
 
                       <h4 class="mg-b-25">Mobile Banner Management</h4>
-
-                      <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Upload Banner Image</button> -->
-
                     </div>
-
             <div class="row">
             <div class="col-xl-12">
               <div class="row row-sm mg-b-25 crd">
-                <?php
-                if(isset($leadership_banner_data_mob)){
-                  foreach ($leadership_banner_data_mob as $key => $val) {
-                    echo '<div class="col-md-6">
-                            <div class="card card-event">
-                              <img src="'.base_url().'/uploads/'.$val->img_link.'" class="card-img-top" alt="">
-                              <div class="card-body tx-13">
-                                <h5>'.$val->img_text.'</h5>
-                              </div>
-                              <div class="card-footer tx-13">
-                                <span class="tx-color-03"></span>
-                                <span class="del-icon">
-                                  <i class="fas fa-edit" title="Edit" data-toggle="modal" data-target="#exampleModal2" onclick="leadership_banner_edit_data_mob('.$val->img_id.')"></i>
-                                </span>
-                              </div>
-                            </div>
-                          </div>';
-                    if(($key+1)%2==0){
-                      echo '</div><div class="row row-sm mg-b-25 crd">';
-                    }
-                  }
-                }
-                else{
-                  echo '<div class="col-md-12"><center><h3>No Data Available !</h3></center></div>';
-                }
-                ?>
+                @if(isset($about_banner_data_mob))
+                                            @foreach($about_banner_data_mob as $key => $val)
+                                                <div class="col-md-6">
+                                                    <div class="card card-event">
+                                                        <img src="{{ asset('backend/img/banner/' . $val->img_link) }}" class="card-img-top" alt="Image Alt Text">
+                                                        <div class="card-body tx-13">
+                                                            <h5>{{ $val->img_text }}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @if(($key+1) % 2 == 0)
+                                                    </div><div class="row row-sm mg-b-25 crd">
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <div class="col-md-12"><center><h3>No Data Available!</h3></center></div>
+                                        @endif
                   </div>
                 </div>
               </div>
@@ -226,34 +124,6 @@
             </div>
 
 
-
-             <!--  <div class="modal fade" id="exampleModal">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-
-                    <div class="modal-header">
-                      <h4 class="modal-title">Upload Banner</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <div class="modal-body">
-                      <form class="form" action="" onsubmit="return false">
-                      <label for="home_banner_text"><b>Banner Text:</b></label>
-                      <input type="text" class="form-control" placeholder="Enter text" id="home_banner_text" required><br>
-                      <label for="home_banner_pic"><b>Choose Image(1350x850):</b></label>
-                      <input type="file" id="home_banner_pic" accept="image/png, image/jpg, image/jpeg" required><br>
-                      <button type="submit" class="btn btn-success" onclick="home_banner_add()">Save</button>
-                      <p style="color: red; font-size: 15px;"><b id="home_banner_error"></b></p>
-                      </form>
-                    </div>
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
-                  </div>
-                </div>
-              </div> -->
 
               <div class="modal fade" id="exampleModal2">
                 <div class="modal-dialog">
@@ -284,39 +154,6 @@
                   </div>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
               <div class="tab-pane fade show" id="section1" role="tabpane2" aria-labelledby="section1-tab">
@@ -1263,7 +1100,7 @@
                         <textarea class="form-control" placeholder="Enter Text" rows="6" id="section7_text3"><?php //echo $section7_data[9]->element_content;?></textarea>
                       </div>
                     </div><br><br><br>
-                  
+
 
                   <h5>Image:</h5>
 
